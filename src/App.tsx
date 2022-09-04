@@ -23,6 +23,11 @@ const App: FC = () => {
     setTodo([...todo, newTask]);
   };
 
+  const deleteTask = (event: string): void => {
+    const newTask = todo.filter((task) => task.taskNmae !== event);
+    setTodo(newTask);
+  };
+
   return (
     <div className="App">
       {/* 헤더부분 */}
@@ -38,7 +43,7 @@ const App: FC = () => {
       {/* 투두리스트 부분*/}
       <div className="todo-list">
         {todo.map((todo: ITask, key: number) => {
-          return <TodoTask key={key} todo={todo} />;
+          return <TodoTask key={key} todo={todo} deletemotion={deleteTask} />;
         })}
       </div>
     </div>
